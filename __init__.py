@@ -44,7 +44,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui.register_handler('SkillGuiExample.colorChange',
                                   self.change_color_event)
 
-    @intent_file_handler('gui.example.one')
+    @intent_handler(IntentBuilder('handle_gui_example_simpleText_intent').require('gui.example.one'))
     def handle_gui_example_simpleText_intent(self, message):
         """
         Example Intent Showcasing Basic UI Text
@@ -53,7 +53,7 @@ class SkillGuiExample(MycroftSkill):
         self.enclosure.display_manager.remove_active()
         self.gui.show_text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat varius turpis porta scelerisque. Nam feugiat, lectus a ultricies tempus, mi sem tempor felis, vitae laoreet nisi ipsum vitae mauris.")
 
-    @intent_file_handler('gui.example.two')
+    @intent_handler(IntentBuilder('handle_gui_example_simpleImage_intent').require('gui.example.two'))
     def handle_gui_example_simpleImage_intent(self, message):
         """
         Example Intent Showcasing Basic UI Image
@@ -62,7 +62,7 @@ class SkillGuiExample(MycroftSkill):
         self.enclosure.display_manager.remove_active()
         self.gui.show_image("https://source.unsplash.com/1920x1080/?+random")
 
-    @intent_file_handler('gui.example.three')
+    @intent_handler(IntentBuilder('handle_gui_example_paginatedText_intent').require('gui.example.three'))
     def handle_gui_example_paginatedText_intent(self, message):
         """
         Example Intent Showcasing Paginated UI Text
@@ -72,7 +72,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui['sampleText'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra massa massa ultricies. Aliquam sem et tortor consequat id porta nibh. Amet est placerat in egestas erat imperdiet sed. Ut ornare lectus sit amet est placerat in egestas erat. Iaculis eu non diam phasellus vestibulum lorem sed risus ultricies. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Vulputate eu scelerisque felis imperdiet proin fermentum. Neque convallis a cras semper auctor neque. Pharetra magna ac placerat vestibulum lectus mauris ultrices eros in. Phasellus faucibus scelerisque eleifend donec pretium vulputate. Malesuada bibendum arcu vitae elementum curabitur vitae nunc. Tellus id interdum velit laoreet id donec. Diam donec adipiscing tristique risus nec. Nisi lacus sed viverra tellus in hac habitasse platea. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. Sit amet nisl suscipit adipiscing bibendum est ultricies. Nec ultrices dui sapien eget mi proin sed. Egestas dui id ornare arcu odio ut sem nulla. Rhoncus aenean vel elit scelerisque. Neque gravida in fermentum et sollicitudin. Pellentesque massa placerat duis ultricies lacus sed. Nunc id cursus metus aliquam eleifend mi. Eu feugiat pretium nibh ipsum consequat nisl. Aenean euismod elementum nisi quis eleifend quam adipiscing vitae. Est ante in nibh mauris cursus mattis. Sagittis eu volutpat odio facilisis mauris sit amet. At consectetur lorem donec massa sapien faucibus. Odio facilisis mauris sit amet. Quis ipsum suspendisse ultrices gravida dictum fusce. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Eget mi proin sed libero enim sed faucibus. Interdum velit euismod in pellentesque massa. Et netus et malesuada fames. Velit aliquet sagittis id consectetur purus. Condimentum lacinia quis vel eros donec ac odio tempor orci. Amet consectetur adipiscing elit pellentesque habitant. Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Nisi porta lorem mollis aliquam ut porttitor leo a diam. Egestas integer eget aliquet nibh praesent tristique. Velit scelerisque in dictum non. Id volutpat lacus laoreet non curabitur gravida arcu ac. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget. Ipsum a arcu cursus vitae congue mauris. Duis at consectetur lorem donec massa. Orci sagittis eu volutpat odio facilisis mauris. Eget mauris pharetra et ultrices neque ornare. Commodo nulla facilisi nullam vehicula ipsum a. Arcu risus quis varius quam quisque. Gravida in fermentum et sollicitudin. Lacus laoreet non curabitur gravida arcu ac tortor dignissim. Netus et malesuada fames ac turpis. Ipsum dolor sit amet consectetur adipiscing. Tellus elementum sagittis vitae et leo duis ut diam quam. Vitae et leo duis ut diam quam nulla. Risus pretium quam vulputate dignissim. Justo laoreet sit amet cursus sit amet dictum sit. Blandit libero volutpat sed cras. Lacus sed viverra tellus in. Ornare lectus sit amet est placerat in egestas erat. Tortor dignissim convallis aenean et tortor at. Tempus quam pellentesque nec nam aliquam. Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus. Consequat id porta nibh venenatis cras sed felis eget. Massa enim nec dui nunc mattis enim ut. Dignissim enim sit amet venenatis urna. Ac tincidunt vitae semper quis lectus nulla at. Sed felis eget velit aliquet sagittis. Vel turpis nunc eget lorem dolor sed viverra. Non consectetur a erat nam at lectus. Iaculis eu non diam phasellus vestibulum. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Libero justo laoreet sit amet cursus sit. Tellus pellentesque eu tincidunt tortor. Maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat. Elit ut aliquam purus sit."
         self.gui.show_page("paginationExample.qml")
 
-    @intent_file_handler('gui.example.four')
+    @intent_handler(IntentBuilder('handle_gui_example_slidingImage_intent').require('gui.example.four'))
     def handle_gui_example_slidingImage_intent(self, message):
         """
         Example Intent Showcasing Sliding Image UI
@@ -82,7 +82,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui['sampleImage'] = "https://source.unsplash.com/1920x1080/?+random"
         self.gui.show_page("slidingExample.qml")
 
-    @intent_file_handler('gui.example.five')
+    @intent_handler(IntentBuilder('handle_gui_example_proportionalDelegate_intent').require('gui.example.five'))
     def handle_gui_example_proportionalDelegate_intent(self, message):
         """
         Example Intent Showcasing Proportional Delegate and Autofit Label
@@ -92,7 +92,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui['sampleText'] = "Loading.."
         self.gui.show_page("proportionalDelegateExample.qml")
 
-    @intent_file_handler('gui.example.five.wrapText')
+    @intent_handler(IntentBuilder('handle_gui_example_proportionalDelegateWrapText_intent').require('gui.example.five.wrapText'))
     def handle_gui_example_proportionalDelegateWrapText_intent(self, message):
         """
         Example Intent Showcasing Proportional Delegate and Autofit Label
@@ -102,7 +102,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui['sampleText'] = "Incomprehensibilities"
         self.gui.show_page("proportionalDelegateWrapExample.qml")
 
-    @intent_file_handler('gui.example.six')
+    @intent_handler(IntentBuilder('handle_gui_example_listView_intent').require('gui.example.six'))
     def handle_gui_example_listView_intent(self, message):
         """
         Example Intent Showcasing Advanced QML Skills with List and JSON Models
@@ -121,7 +121,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui['background'] = "https://source.unsplash.com/1920x1080/?+random"
         self.gui.show_page("listViewExample.qml")
 
-    @intent_file_handler('gui.example.seven')
+    @intent_handler(IntentBuilder('handle_gui_example_events_intent').require('gui.example.seven'))
     def handle_gui_example_events_intent(self, message):
         """
         Example Intent Showcasing Events Between Skill and Display
@@ -137,7 +137,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui['fooColor'] = message.data['color']
         self.gui.show_page("eventsExample.qml")
 
-    @intent_file_handler('gui.example.eight')
+    @intent_handler(IntentBuilder('handle_gui_example_audioDelegate_intent').require('gui.example.eight'))
     def handle_gui_example_audioDelegate_intent(self, message):
         self.gui.clear()
         self.enclosure.display_manager.remove_active()
@@ -146,7 +146,7 @@ class SkillGuiExample(MycroftSkill):
         self.gui["audioThumb"] = "https://www.free-stock-music.com/thumbnails/serge-narcissoff-background-theme.jpg"
         self.gui.show_page("audioPlayerExample.qml")
 
-    @intent_file_handler('gui.example.menu')
+    @intent_handler(IntentBuilder('handle_gui_example_menu_intent').require('gui.example.menu'))
     def handle_gui_example_menu_intent(self, message):
         """
         Build and Show Skill Example Menu To Run Test
