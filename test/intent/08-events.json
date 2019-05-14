@@ -1,4 +1,4 @@
 {
   "utterance": "show events example",
-  "intent_type": "handle_gui_example_events_intent",
+  "intent_type": "handle_gui_example_events_intent"
 }
