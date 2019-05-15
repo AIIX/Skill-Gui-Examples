@@ -6,10 +6,14 @@ import Mycroft 1.0 as Mycroft
 
 Mycroft.Delegate {
      background: Mycroft.SlidingImage {
+     id: slidingImage
      source: sessionData.sampleImage
-     running: true    //If true the sliding animation is active
-     speed: 0.1         //Animation speed in Kirigami.Units.gridUnit / second
-   }
+     running: false
+     speed: 0.2         //Animation speed in Kirigami.Units.gridUnit / second
+     onSourceChanged: {
+         slidingImage.running = true
+        }
+    }
    
     RoundButton {
         id: backButton
@@ -19,7 +23,7 @@ Mycroft.Delegate {
         implicitHeight: implicitWidth
         icon.name: "go-previous-symbolic"
         onClicked: {
-            Mycroft.MycroftController.sendRequest("SkillGuiExample.menu", {})
+            triggerGuiEvent("SkillGuiExample.menu", {})
         }
     }
 } 
