@@ -7,7 +7,7 @@ import Mycroft 1.0 as Mycroft
 Mycroft.Delegate {
      background: Mycroft.SlidingImage {
      source: sessionData.sampleImage
-     running: bool    //If true the sliding animation is active
+     running: true    //If true the sliding animation is active
      speed: 0.1         //Animation speed in Kirigami.Units.gridUnit / second
    }
    
