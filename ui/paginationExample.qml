@@ -19,7 +19,7 @@ Mycroft.Delegate {
         implicitHeight: implicitWidth
         icon.name: "go-previous-symbolic"
         onClicked: {
-            Mycroft.MycroftController.sendRequest("SkillGuiExample.menu", {})
+            triggerGuiEvent("SkillGuiExample.menu", {})
             exampleAudioPlayer.pause
         }
     }

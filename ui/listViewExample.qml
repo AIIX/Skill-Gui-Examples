@@ -9,6 +9,18 @@ Mycroft.ScrollableDelegate{
     skillBackgroundSource: sessionData.background
     property var sampleModel: sessionData.sampleBlob
 
+    RoundButton {
+        id: backButton
+        Layout.alignment: Qt.AlignTop
+        Layout.leftMargin: Kirigami.Units.largeSpacing
+        implicitWidth: Kirigami.Units.iconSizes.medium
+        implicitHeight: implicitWidth
+        icon.name: "go-previous-symbolic"
+        onClicked: {
+            triggerGuiEvent("SkillGuiExample.menu", {})
+        }
+    }
+    
     Kirigami.CardsListView {
         id: exampleListView
         Layout.fillWidth: true
