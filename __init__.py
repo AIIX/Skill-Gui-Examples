@@ -37,6 +37,10 @@ class SkillGuiExample(MycroftSkill):
                                   self.handle_gui_example_events_intent)
         self.gui.register_handler('SkillGuiExample.audioDelegateExample',
                                   self.handle_gui_example_audioDelegate_intent)
+        self.gui.register_handler('SkillGuiExample.htmlUrlExample', 
+                                  self.handle_gui_example_showHTMLUrl_intent)
+        self.gui.register_handler('SkillGuiExample.htmlRawExample', 
+                                  self.handle_gui_example_showHTMLRaw_intent)
         self.gui.register_handler('SkillGuiExample.menu',
                                   self.handle_gui_example_menu_intent)
 
@@ -51,7 +55,7 @@ class SkillGuiExample(MycroftSkill):
         """
         self.gui.clear()
         self.enclosure.display_manager.remove_active()
-        self.gui.show_text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat varius turpis porta scelerisque. Nam feugiat, lectus a ultricies tempus, mi sem tempor felis, vitae laoreet nisi ipsum vitae mauris.")
+        self.gui.show_text("Lorem ipsum dolor sit amet booom baka kakakaka.")
 
     @intent_handler(IntentBuilder('handle_gui_example_simpleImage_intent').require('gui.example.two'))
     def handle_gui_example_simpleImage_intent(self, message):
@@ -60,7 +64,7 @@ class SkillGuiExample(MycroftSkill):
         """
         self.gui.clear()
         self.enclosure.display_manager.remove_active()
-        self.gui.show_image("https://source.unsplash.com/1920x1080/?+random")
+        self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title")
 
     @intent_handler(IntentBuilder('handle_gui_example_paginatedText_intent').require('gui.example.three'))
     def handle_gui_example_paginatedText_intent(self, message):
@@ -145,6 +149,42 @@ class SkillGuiExample(MycroftSkill):
         self.gui["audioTitle"] = "Background Theme by Serge Narcissoff "
         self.gui["audioThumb"] = "https://www.free-stock-music.com/thumbnails/serge-narcissoff-background-theme.jpg"
         self.gui.show_page("audioPlayerExample.qml")
+        
+    @intent_handler(IntentBuilder('handle_gui_example_showHTMLUrl_intent').require('gui.example.nine'))
+    def handle_gui_example_showHTMLUrl_intent(self, message):
+        self.gui.clear()
+        self.enclosure.display_manager.remove_active()
+        self.gui.show_url("https://mycroft.ai/", override_idle=True)
+
+    @intent_handler(IntentBuilder('handle_gui_example_showHTMLRaw_intent').require('gui.example.ten'))
+    def handle_gui_example_showHTMLRaw_intent(self, message):
+        self.gui.clear()
+        self.enclosure.display_manager.remove_active()
+        rawhtmlexample = """<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<body>
+<h1> HTML Example </h1>
+<p> This is an example of an HTML webpage. </p>
+<p> <b>Tags</b> can be wrapped <i>inside other tags!</i> </p>
+
+<p>
+	HTML doesn't care about extra spaces, tabs or newlines,
+	so we can use indentation and spacing to keep everything
+	lined up nicely.
+</p>
+
+<ul>
+	<li> This is how you create a bulleted list! </li>
+	<li> Item 2 </li>
+	<li> Item 3 </li>
+</ul>
+</body>
+</html>
+""" 
+        self.gui.show_html(rawhtmlexample, override_idle=True)
 
     @intent_handler(IntentBuilder('handle_gui_example_menu_intent').require('gui.example.menu'))
     def handle_gui_example_menu_intent(self, message):
@@ -198,6 +238,16 @@ class SkillGuiExample(MycroftSkill):
             "exampleIcon": "beamerblock",
             "exampleLabel": "Audio Player Example",
             "exampleEvent": "SkillGuiExample.audioDelegateExample"
+        },
+            {
+            "exampleIcon": "beamerblock",
+            "exampleLabel": "Html Url Example",
+            "exampleEvent": "SkillGuiExample.htmlUrlExample"
+        },
+            {
+            "exampleIcon": "beamerblock",
+            "exampleLabel": "Html Raw Example",
+            "exampleEvent": "SkillGuiExample.htmlRawExample"
         }]
         menuObject['menuItems'] = menuList
         self.gui['menuBlob'] = menuObject
