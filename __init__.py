@@ -14,6 +14,7 @@ class SkillGuiExample(MycroftSkill):
 
     def __init__(self):
         super().__init__("SkillGuiExample")
+        self.html_resources = "file://" + dirname(__file__) + '/res/'
 
     def initialize(self):
         # Handle Menu and Navigation
@@ -167,6 +168,7 @@ class SkillGuiExample(MycroftSkill):
 <title>Untitled Document</title>
 <body>
 <h1> HTML Example </h1>
+<img src="apple.png" width=150px height=100px>
 <p> This is an example of an HTML webpage. </p>
 <p> <b>Tags</b> can be wrapped <i>inside other tags!</i> </p>
 
@@ -183,8 +185,8 @@ class SkillGuiExample(MycroftSkill):
 </ul>
 </body>
 </html>
-""" 
-        self.gui.show_html(rawhtmlexample, override_idle=True)
+"""
+        self.gui.show_html(rawhtmlexample, resource_url=self.html_resources, override_idle=True)
 
     @intent_handler(IntentBuilder('handle_gui_example_menu_intent').require('gui.example.menu'))
     def handle_gui_example_menu_intent(self, message):
