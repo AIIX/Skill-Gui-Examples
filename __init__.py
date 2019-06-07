@@ -42,6 +42,8 @@ class SkillGuiExample(MycroftSkill):
                                   self.handle_gui_example_showHTMLUrl_intent)
         self.gui.register_handler('SkillGuiExample.htmlRawExample', 
                                   self.handle_gui_example_showHTMLRaw_intent)
+        self.gui.register_handler('SkillGuiExample.videoExample', 
+                                  self.handle_gui_example_showVideo_intent)
         self.gui.register_handler('SkillGuiExample.menu',
                                   self.handle_gui_example_menu_intent)
 
@@ -187,7 +189,16 @@ class SkillGuiExample(MycroftSkill):
 </html>
 """
         self.gui.show_html(rawhtmlexample, resource_url=self.html_resources, override_idle=True)
-
+        
+        
+    @intent_handler(IntentBuilder('handle_gui_video_example_intent').require('gui.example.eleven'))
+    def handle_gui_example_showVideo_intent(self, message):
+        self.gui.clear()
+        self.enclosure.display_manager.remove_active()
+        self.gui["video"] = "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"
+        self.gui["status"] = "play"
+        self.gui.show_page("videoPlayerExample.qml")
+        
     @intent_handler(IntentBuilder('handle_gui_example_menu_intent').require('gui.example.menu'))
     def handle_gui_example_menu_intent(self, message):
         """
@@ -250,6 +261,11 @@ class SkillGuiExample(MycroftSkill):
             "exampleIcon": "beamerblock",
             "exampleLabel": "Html Raw Example",
             "exampleEvent": "SkillGuiExample.htmlRawExample"
+        },            
+            {
+            "exampleIcon": "beamerblock",
+            "exampleLabel": "Video Player Example",
+            "exampleEvent": "SkillGuiExample.videoExample"
         }]
         menuObject['menuItems'] = menuList
         self.gui['menuBlob'] = menuObject
