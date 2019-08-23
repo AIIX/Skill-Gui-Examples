@@ -5,7 +5,7 @@ from os.path import dirname, join
 from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler, intent_file_handler
 from mycroft.messagebus.message import Message
-
+from mycroft.skills.core import resting_screen_handler
 
 class SkillGuiExample(MycroftSkill):
     """
@@ -270,6 +270,13 @@ class SkillGuiExample(MycroftSkill):
         menuObject['menuItems'] = menuList
         self.gui['menuBlob'] = menuObject
         self.gui.show_page("exampleMenu.qml")
+
+    @resting_screen_handler('Example Idle')
+    def handle_idle(self, message):
+        self.gui.clear()
+        self.log.info('Activating foo/bar resting page')
+        self.gui["exampleText"] = "This Is A Idle Screen"
+        self.gui.show_page('idle.qml')
 
     def stop(self):
         pass
